@@ -16,9 +16,8 @@ For help getting started with Flutter development, view the
 samples, guidance on mobile development, and a full API reference.
 
 
+<!-- assets/images/screenshot.png -->
 
+![alt text1][logo]
 
-
-assets/images/Screenshot 2024-05-12 144339.png
-
-![weather_app](assets/images/Screenshot 2024-05-12 144339.png)
+[logo]: assets/images/screenshot.png "Title Text"
