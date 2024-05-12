@@ -19,6 +19,6 @@ samples, guidance on mobile development, and a full API reference.
 
 
 
+assets/images/Screenshot 2024-05-12 144339.png
 
-
-![image info](assets/images/Screenshot 2024-05-12 144339.png)
+![weather_app](assets/images/Screenshot 2024-05-12 144339.png)
