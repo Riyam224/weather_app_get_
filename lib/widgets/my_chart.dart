@@ -5,13 +5,14 @@ import 'package:get/get.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:weather_api_practice/controller/home_controller.dart';
 import 'package:weather_api_practice/models/five_days_data.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
 
 class MyChart extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: MediaQuery.of(context).size.width,
-      height: 240,
+      height: 100,
       child: Card(
         elevation: 5,
         shape: RoundedRectangleBorder(
@@ -19,13 +20,13 @@ class MyChart extends GetView<HomeController> {
         ),
         child: SfCartesianChart(
           primaryXAxis: CategoryAxis(),
-          // series: <ChartSeries<FiveDayData, String>>[
-          //   SplineSeries<FiveDayData, String>(
-          //     dataSource: controller.fiveDaysData,
-          //     xValueMapper: (FiveDayData f, _) => f.dateTime,
-          //     yValueMapper: (FiveDayData f, _) => f.temp,
-          //   ),
-          // ],
+          series: <CartesianSeries<FiveDayData, String>>[
+            SplineSeries<FiveDayData, String>(
+              dataSource: controller.fiveDaysData,
+              xValueMapper: (FiveDayData f, _) => f.dateTime,
+              yValueMapper: (FiveDayData f, _) => f.temp,
+            ),
+          ],
         ),
       ),
     );

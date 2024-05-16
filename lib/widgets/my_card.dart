@@ -88,7 +88,8 @@ class MyCard extends GetView<HomeController> {
                       width: double.infinity,
                       height: double.infinity,
                       child: Card(
-                        color: Colors.white,
+                        color:
+                            Color.fromARGB(255, 173, 169, 169).withOpacity(0.5),
                         elevation: 5,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(25),
@@ -105,15 +106,10 @@ class MyCard extends GetView<HomeController> {
                                   Center(
                                     child: Text(
                                       '${controller.currentWeatherData.name}',
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .caption!
-                                          .copyWith(
-                                            color: Colors.black45,
-                                            fontSize: 24,
-                                            fontWeight: FontWeight.bold,
-                                            fontFamily: 'flutterfonts',
-                                          ),
+                                      style: TextStyle(
+                                        fontSize: 24,
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
                                   ),
                                   Center(
@@ -121,14 +117,10 @@ class MyCard extends GetView<HomeController> {
                                       DateFormat()
                                           .add_MMMMEEEEd()
                                           .format(DateTime.now()),
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .caption!
-                                          .copyWith(
-                                            color: Colors.black45,
-                                            fontSize: 16,
-                                            fontFamily: 'flutterfonts',
-                                          ),
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
                                   ),
                                 ],
@@ -144,36 +136,25 @@ class MyCard extends GetView<HomeController> {
                                     children: <Widget>[
                                       Text(
                                         '${controller.currentWeatherData.weather![0].description}',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .caption!
-                                            .copyWith(
-                                              color: Colors.black45,
-                                              fontSize: 22,
-                                              fontFamily: 'flutterfonts',
-                                            ),
+                                        style: TextStyle(
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.bold,
+                                        ),
                                       ),
                                       SizedBox(height: 10),
                                       Text(
                                         '${(controller.currentWeatherData.main!.temp! - 273.15).round().toString()}\u2103',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .headline2!
-                                            .copyWith(
-                                                color: Colors.black45,
-                                                fontFamily: 'flutterfonts'),
+                                        style: TextStyle(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.bold,
+                                        ),
                                       ),
                                       Text(
                                         'min: ${(controller.currentWeatherData.main!.tempMin! - 273.15).round().toString()}\u2103 / max: ${(controller.currentWeatherData.main!.tempMax! - 273.15).round().toString()}\u2103',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .caption!
-                                            .copyWith(
-                                              color: Colors.black45,
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.bold,
-                                              fontFamily: 'flutterfonts',
-                                            ),
+                                        style: TextStyle(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.bold,
+                                        ),
                                       ),
                                     ],
                                   ),
@@ -182,26 +163,24 @@ class MyCard extends GetView<HomeController> {
                                   padding: EdgeInsets.only(right: 20),
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
-                                    children: <Widget>[
+                                    children: [
                                       SizedBox(
                                         width: 120,
                                         height: 120,
                                         child: LottieBuilder.asset(
                                             Images.cloudyAnim),
                                       ),
-                                      Container(
-                                        child: Text(
-                                          'wind ${controller.currentWeatherData.wind!.speed} m/s',
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .caption!
-                                              .copyWith(
-                                                color: Colors.black45,
-                                                fontSize: 14,
-                                                fontWeight: FontWeight.bold,
-                                                fontFamily: 'flutterfonts',
-                                              ),
-                                        ),
+                                      Text(
+                                        'wind ${controller.currentWeatherData.wind!.speed} m/s',
+                                        // style: Theme.of(context)
+                                        //     .textTheme
+                                        //     .caption!
+                                        //     .copyWith(
+                                        //       color: Colors.black45,
+                                        //       fontSize: 14,
+                                        //       fontWeight: FontWeight.bold,
+                                        //       fontFamily: 'flutterfonts',
+                                        //     ),
                                       ),
                                     ],
                                   ),

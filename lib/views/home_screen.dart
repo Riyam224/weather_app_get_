@@ -1,5 +1,4 @@
 // ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, deprecated_member_use
-
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:intl/intl.dart';
@@ -15,7 +14,7 @@ class HomeScreen extends GetView<HomeController> {
     return Scaffold(
       body: GetBuilder<HomeController>(builder: (controller) {
         return Column(
-          children: <Widget>[
+          children: [
             Expanded(
               flex: 1,
               child: Container(
@@ -34,7 +33,7 @@ class HomeScreen extends GetView<HomeController> {
                   ),
                 ),
                 child: Stack(
-                  children: <Widget>[
+                  children: [
                     Container(
                       child: AppBar(
                         backgroundColor: Colors.transparent,
@@ -50,12 +49,13 @@ class HomeScreen extends GetView<HomeController> {
                     ),
                     //TODO
                     Container(
-                      padding: EdgeInsets.only(top: 100, left: 20, right: 20),
+                      padding: EdgeInsets.only(top: 60, left: 20, right: 20),
                       child: TextField(
                         onChanged: (value) => controller.city = value,
                         style: TextStyle(
                           color: Colors.white,
                         ),
+                        // todo search bar
                         textInputAction: TextInputAction.search,
                         onSubmitted: (value) => controller.updateWeather(),
                         decoration: InputDecoration(
@@ -65,9 +65,12 @@ class HomeScreen extends GetView<HomeController> {
                           ),
                           hintStyle: TextStyle(color: Colors.white),
                           hintText: 'Search'.toUpperCase(),
+                          // todo search end
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
-                            borderSide: BorderSide(color: Colors.white),
+                            borderSide: BorderSide(
+                              color: Colors.white,
+                            ),
                           ),
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
@@ -78,6 +81,7 @@ class HomeScreen extends GetView<HomeController> {
                             borderSide: BorderSide(color: Colors.white),
                           ),
                         ),
+                        // todo search end
                       ),
                     ),
                     Align(
@@ -91,7 +95,7 @@ class HomeScreen extends GetView<HomeController> {
                           minHeight: 0.0,
                           maxHeight: (MediaQuery.of(context).size.height / 4),
                           child: Stack(
-                            children: <Widget>[
+                            children: [
                               Container(
                                 padding: EdgeInsets.symmetric(horizontal: 15),
                                 width: double.infinity,
@@ -105,30 +109,23 @@ class HomeScreen extends GetView<HomeController> {
                                   child: Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.center,
-                                    children: <Widget>[
-                                      //TODO
+                                    children: [
                                       Container(
                                         padding: EdgeInsets.only(
                                             top: 15, left: 20, right: 20),
                                         child: Column(
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
-                                          children: <Widget>[
+                                          children: [
                                             Center(
                                               child: Text(
                                                 '${controller.currentWeatherData.name}'
                                                     .toUpperCase(),
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .caption!
-                                                    .copyWith(
-                                                      color: Colors.black45,
-                                                      fontSize: 24,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      fontFamily:
-                                                          'flutterfonts',
-                                                    ),
+                                                style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 20,
+                                                ),
+                                                //  todo
                                               ),
                                             ),
                                             Center(
@@ -136,67 +133,57 @@ class HomeScreen extends GetView<HomeController> {
                                                 DateFormat()
                                                     .add_MMMMEEEEd()
                                                     .format(DateTime.now()),
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .caption!
-                                                    .copyWith(
-                                                      color: Colors.black45,
-                                                      fontSize: 16,
-                                                      fontFamily:
-                                                          'flutterfonts',
-                                                    ),
+                                                style: TextStyle(
+                                                  fontSize: 15,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                                // todo
                                               ),
                                             ),
                                           ],
                                         ),
                                       ),
-                                      Divider(),
+                                      SizedBox(
+                                        height: 10,
+                                      ),
+                                      Divider(
+                                        height: 4,
+                                        indent: 30,
+                                        endIndent: 30,
+                                      ),
                                       //TODO
                                       Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
-                                        children: <Widget>[
+                                        children: [
                                           Container(
-                                            padding: EdgeInsets.only(left: 50),
+                                            padding: EdgeInsets.only(left: 20),
                                             child: Column(
-                                              children: <Widget>[
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
                                                 Text(
                                                   '${controller.currentWeatherData.weather![0].description}',
-                                                  style: Theme.of(context)
-                                                      .textTheme
-                                                      .caption!
-                                                      .copyWith(
-                                                        color: Colors.black45,
-                                                        fontSize: 22,
-                                                        fontFamily:
-                                                            'flutterfonts',
-                                                      ),
                                                 ),
-                                                SizedBox(height: 10),
-                                                Text(
-                                                  '${(controller.currentWeatherData.main!.temp! - 273.15).round().toString()}\u2103',
-                                                  style: Theme.of(context)
-                                                      .textTheme
-                                                      .headline2!
-                                                      .copyWith(
-                                                          color: Colors.black45,
-                                                          fontFamily:
-                                                              'flutterfonts'),
+                                                SizedBox(
+                                                  height: 5,
                                                 ),
                                                 Text(
-                                                  'min: ${(controller.currentWeatherData.main!.tempMin! - 273.15).round().toString()}\u2103 / max: ${(controller.currentWeatherData.main!.tempMax! - 273.15).round().toString()}\u2103',
-                                                  style: Theme.of(context)
-                                                      .textTheme
-                                                      .caption!
-                                                      .copyWith(
-                                                        color: Colors.black45,
-                                                        fontSize: 14,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        fontFamily:
-                                                            'flutterfonts',
-                                                      ),
-                                                ),
+                                                    '${(controller.currentWeatherData.main!.temp! - 273.15).round().toString()}\u2103',
+                                                    style: TextStyle(
+                                                      color: Colors.black45,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontSize: 35,
+                                                    )),
+                                                Text(
+                                                    'min: ${(controller.currentWeatherData.main!.tempMin! - 273.15).round().toString()}\u2103 / max: ${(controller.currentWeatherData.main!.tempMax! - 273.15).round().toString()}\u2103',
+                                                    style: TextStyle(
+                                                      color: Colors.black45,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontSize: 10,
+                                                    )),
                                               ],
                                             ),
                                           ),
@@ -205,27 +192,25 @@ class HomeScreen extends GetView<HomeController> {
                                             child: Column(
                                               mainAxisAlignment:
                                                   MainAxisAlignment.center,
-                                              children: <Widget>[
+                                              children: [
                                                 SizedBox(
                                                   width: 120,
                                                   height: 120,
                                                   child: LottieBuilder.asset(
                                                       Images.cloudyAnim),
                                                 ),
+                                                SizedBox(
+                                                  height: 20,
+                                                ),
                                                 Container(
                                                   child: Text(
                                                     'wind ${controller.currentWeatherData.wind!.speed} m/s',
-                                                    style: Theme.of(context)
-                                                        .textTheme
-                                                        .caption!
-                                                        .copyWith(
-                                                          color: Colors.black45,
-                                                          fontSize: 14,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          fontFamily:
-                                                              'flutterfonts',
-                                                        ),
+                                                    style: TextStyle(
+                                                      color: Colors.black45,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontSize: 20,
+                                                    ),
                                                   ),
                                                 ),
                                               ],
@@ -253,44 +238,35 @@ class HomeScreen extends GetView<HomeController> {
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 15),
                     child: Container(
-                      padding: EdgeInsets.only(top: 120),
+                      padding: EdgeInsets.only(top: 150),
                       child: Align(
                         alignment: Alignment.topLeft,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
+                          children: [
                             Container(
                               child: Text(
-                                'other city'.toUpperCase(),
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .caption!
-                                    .copyWith(
-                                      fontSize: 16,
-                                      fontFamily: 'flutterfonts',
-                                      color: Colors.black45,
-                                      fontWeight: FontWeight.bold,
-                                    ),
+                                'other cities ',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20,
+                                ),
                               ),
                             ),
                             MyList(),
                             Container(
-                              padding: EdgeInsets.only(top: 10),
+                              padding: EdgeInsets.only(top: 20),
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: <Widget>[
-                                  Text(
-                                    'forcast next 5 days'.toUpperCase(),
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .caption!
-                                        .copyWith(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.black45,
-                                        ),
-                                  ),
+                                  Text('forcast next 5 days'.toUpperCase(),
+                                      style: TextStyle(
+                                        color: Colors.black45,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 20,
+                                      )),
                                   Icon(
                                     Icons.next_plan_outlined,
                                     color: Colors.black45,

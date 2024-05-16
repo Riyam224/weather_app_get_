@@ -28,6 +28,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  cartesian_vision: ^0.0.2
   cupertino_icons: ^1.0.8
   dio: ^5.4.3+1
   flutter:
@@ -55,7 +56,6 @@ flutter:
     - assets/images/
     - assets/anims/
 
-
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
   # For details regarding adding assets from package dependencies, see
@@ -69,6 +69,5 @@ flutter:
     - family: flutterfonts
       fonts:
         - asset: assets/fonts/flutterfonts.ttf
-  #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
